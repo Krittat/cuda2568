@@ -12,10 +12,7 @@ vector<float> readPricesFromCSV(const string& filename) {
     vector<float> prices;
     
     ifstream file(filename);
-    if (!file.is_open()) {
-        cerr << "Error: cannot open file " << filename << endl;
-        return prices;
-    }
+    if (!file.is_open()) {cerr << "Error: cannot open file " << filename << endl;return prices;}
 
     string line;
     bool headerSkipped = false;
@@ -84,7 +81,7 @@ int main() {
 
     // แสดงผลบางส่วนเพื่อเช็คความถูกต้อง
     cout << "Sample trend result:\n";
-    for (int i = 0; i < min(20, (int)trend.size()); ++i) {
+    for (int i = 0; i < min(100, (int)trend.size()); ++i) {
         cout << trend[i] << " ";
     }
     cout << "\n";
