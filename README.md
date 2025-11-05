@@ -15,7 +15,7 @@ project_root/
 |   └── trend_seq.cpp            # Sequential source code
 │
 ├── presentation/
-│   └── cudaproject.pdf          # Presentation file
+│   └── 6610450757_parallel_project.pdf          # Presentation file
 │
 ├── README.md                    # This documentation file
 
