@@ -90,15 +90,12 @@ int main() {
     cout << fixed << setprecision(3);
     cout << "Loaded " << allData.size() << " total records.\n";
     cout << "Found " << groupedData.size() << " indices.\n\n";
-
+    
     for (auto& [indexName, data] : groupedData) {
         if (data.size() < 2) continue;
 
         auto start = chrono::high_resolution_clock::now();
         vector<int> trend = detectTrendSequential(data);
-        auto end = chrono::high_resolution_clock::now();
-
-        double duration_ms = chrono::duration<double, milli>(end - start).count();
 
         int longestRun = 0, currentRun = 0;
         int longestStartIdx = 0, currentStartIdx = 0;
@@ -113,6 +110,9 @@ int main() {
                 }
             } else currentRun = 0;
         }
+        auto end = chrono::high_resolution_clock::now();
+
+        double duration_ms = chrono::duration<double, milli>(end - start).count();
 
         cout << "=== Index: " << indexName << " (" << data.size() << " records) === "<< endl;
         cout << "Detection time: " << duration_ms << " ms\n";
@@ -123,11 +123,10 @@ int main() {
             cout << "Date range: " 
                  << data[longestStartIdx].date << "->"
                  << data[longestStartIdx + longestRun].date << endl;
-            // cout << "   Price range: " 
-            //      << data[longestStartIdx].closePrice << "->"
-            //      << data[longestStartIdx + longestRun].closePrice << endl;
+
         }
         cout << "\n";
+
     }
 
     return 0;
